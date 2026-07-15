@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+
+    <title>League Office | Bureaucrat Football League</title>
+
+    <link rel="icon" href="/images/logo/BFL_letters_white.svg" type="image/svg+xml" sizes="any" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700..900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("bfl-theme");
+
+        if (savedTheme === "light" || savedTheme === "dark") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch {}
+    </script>
+
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <a class="site-logo" href="/">
+        <img src="/images/logo/BFL_letters_white.svg" alt="Bureaucrat Football League" />
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="/">Home</a>
+        <a href="/about/">About</a>
+        <a href="/franchises/">Franchises</a>
+        <a href="/league-office/" aria-current="page">League Office</a>
+        <a href="/calendar/">Calendar</a>
+        <a href="/records/">Records</a>
+      </nav>
+    </header>
+
+    <main class="page">
+      <h1>League Office</h1>
+
+      <section class="placeholder">
+        <p class="eyebrow">Official Status</p>
+
+        <p>This section is currently being prepared for the BFL's inaugural season. Additional information will be published following approval by the League Office.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <a class="footer-logo" href="/" aria-label="Bureaucrat Football League homepage">
+          <img class="footer-seal" src="/images/logo/BFL_logo.svg" alt="" />
+        </a>
+
+        <div class="footer-identity">
+          <p class="footer-name">Bureaucrat Football League</p>
+          <p class="footer-motto">In Ball We Trust</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="/about/">About</a>
+          <a href="/franchises/">Franchises</a>
+          <a href="/league-office/">League Office</a>
+          <a href="/calendar/">Calendar</a>
+          <a href="/records/">Records</a>
+        </nav>
+      </div>
+
+      <p class="footer-meta">Established 2026 · Bureaucrat Football League</p>
+    </footer>
+
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode">
+      <svg class="theme-icon icon-sun" viewBox="0 0 24 24" aria-hidden="true" hidden>
+        <circle cx="12" cy="12" r="4"></circle>
+        <path
+          d="M12 2v2
+         M12 20v2
+         M4.93 4.93l1.42 1.42
+         M17.66 17.66l1.41 1.41
+         M2 12h2
+         M20 12h2
+         M4.93 19.07l1.42-1.42
+         M17.66 6.34l1.41-1.41"
+        ></path>
+      </svg>
+
+      <svg class="theme-icon icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M21 12.79A9 9 0 1 1 11.21 3
+         7 7 0 0 0 21 12.79Z"
+        ></path>
+      </svg>
+    </button>
+
+    <script src="/scripts/theme.js"></script>
+  </body>
+</html>
