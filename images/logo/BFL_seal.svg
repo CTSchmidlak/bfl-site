@@ -4,7 +4,7 @@
     <rect id="Artboard1" x="0" y="0" width="1200" height="1200" style="fill:none;"/>
     <g id="Artboard11" serif:id="Artboard1">
         <g transform="matrix(1.137784,0,0,1.137784,-120.496507,-53.39973)">
-            <circle cx="633.245" cy="574.274" r="472.788" style="fill:rgb(11,27,49);stroke:rgb(233,215,188);stroke-width:18.31px;"/>
+            <circle cx="633.245" cy="574.274" r="472.788" style="fill:rgb(11,27,49);stroke:rgb(233,215,188);stroke-width:21.97px;"/>
         </g>
         <g transform="matrix(0.899925,0,0,0.899925,30.1269,83.19676)">
             <circle cx="633.245" cy="574.274" r="472.788" style="fill:rgb(28,41,59);"/>
@@ -84,8 +84,8 @@
                             <rect x="375.805" y="-268.275" width="57.6" height="207.085" style="fill:rgb(233,215,188);"/>
                         </g>
                     </g>
-                    <g transform="matrix(1.102347,0,0,1.111204,-28.387636,-90.252512)">
-                        <path d="M242.961,830.45L957.594,830.45" style="fill:none;stroke:rgb(233,215,188);stroke-width:8.67px;"/>
+                    <g transform="matrix(1.102347,0,0,1.111204,-104.196432,-98.462056)">
+                        <path d="M242.961,830.45L957.594,830.45" style="fill:none;stroke:rgb(233,215,188);stroke-width:26.02px;"/>
                     </g>
                 </g>
             </g>
