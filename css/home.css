@@ -1,19 +1,8 @@
 /* Homepage */
 
 .home-page {
-  width: min(1100px, calc(100% - 2rem));
-}
-
-.home-hero {
-  max-width: 780px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.home-logo {
-  display: block;
-  width: min(420px, 85vw);
-  margin: 0 auto 2rem;
+  width: min(var(--site-width), calc(100% - 2rem));
+  padding-top: 2.5rem;
 }
 
 .home-hero .eyebrow {
@@ -27,49 +16,294 @@
   letter-spacing: -0.02em;
 }
 
-.hero-summary {
-  max-width: 650px;
-  margin: 1.5rem auto 0;
-  color: var(--text-secondary);
-  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
-  line-height: 1.6;
+/* Featured carousel */
+
+.home-carousel {
+  width: 100%;
+  margin: 0 auto;
+  --carousel-edge-space: clamp(4.5rem, 10vw, 7rem);
 }
 
-.hero-actions {
+.carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: clamp(520px, 62vh, 680px);
+  border: 1px solid var(--border-color);
+  border-top: 5px solid var(--accent);
+  background: var(--bfl-blue);
+  color: var(--bfl-white);
+}
+
+.carousel-track {
+  height: 100%;
+}
+
+.carousel-slide {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: 100%;
+  height: 100%;
+  padding-block: clamp(2rem, 5vw, 4rem);
+  padding-inline: var(--carousel-edge-space);
+  background: var(--bfl-blue);
+}
+
+.carousel-slide[hidden] {
+  display: none;
+}
+
+.carousel-slide.has-image {
+  background-image: var(--slide-image);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.carousel-slide.image-contain {
+  background-size: min(440px, 70%) auto;
+}
+
+.carousel-slide.has-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 75%);
+  z-index: 1;
+}
+
+.carousel-slide-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+}
+
+.carousel-slide .eyebrow {
+  color: var(--bfl-cream);
+}
+
+.carousel-slide h2 {
+  max-width: 780px;
+  margin: 0;
+  color: var(--bfl-white);
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.carousel-slide p {
+  max-width: 680px;
+  color: var(--bfl-cream);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+}
+
+.carousel-slide .button {
+  margin-top: 1rem;
+}
+
+/* Carousel arrows */
+
+.carousel-arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+
+  width: min(9rem, 18vw);
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+  color: var(--bfl-white);
+
+  font: inherit;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1;
+
+  cursor: pointer;
+  opacity: 0.75;
+}
+
+.carousel-arrow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.carousel-arrow:hover,
+.carousel-arrow:focus-visible {
+  opacity: 1;
+}
+
+.carousel-arrow:hover::before,
+.carousel-arrow:focus-visible::before {
+  opacity: 1;
+}
+
+.carousel-arrow:focus-visible {
+  outline: 3px solid var(--bfl-white);
+  outline-offset: -6px;
+}
+
+.carousel-arrow-prev {
+  left: 0;
+  text-align: left;
+  padding-left: 1.25rem;
+}
+
+.carousel-arrow-prev::before {
+  background: linear-gradient(to right, rgb(0 0 0 / 55%), rgb(0 0 0 / 0%));
+}
+
+.carousel-arrow-next {
+  right: 0;
+  text-align: right;
+  padding-right: 1.25rem;
+}
+
+.carousel-arrow-next::before {
+  background: linear-gradient(to left, rgb(0 0 0 / 55%), rgb(0 0 0 / 0%));
+}
+
+/* Carousel bottom controls */
+
+.carousel-bottom-controls {
+  position: absolute;
+  left: 50%;
+  bottom: 1.1rem;
+  z-index: 3;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  align-items: center;
   gap: 1rem;
-  margin-top: 2rem;
+  transform: translateX(-50%);
+}
+
+.carousel-play-toggle {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--bfl-white);
+  font: inherit;
+  font-size: 0.95rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  opacity: 0.8;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 65%);
+}
+
+.carousel-play-toggle:hover {
+  opacity: 1;
+}
+
+.carousel-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.carousel-dot {
+  width: 0.65rem;
+  height: 0.65rem;
+  padding: 0;
+  border: 1px solid var(--bfl-white);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.carousel-dot.is-active {
+  background: var(--bfl-white);
+}
+
+/* Carousel timer */
+
+.carousel-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  height: 0.25rem;
+  background: rgb(247 242 232 / 25%);
+}
+
+.carousel-progress-fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: left center;
+  transform: scaleX(1);
+  background: var(--bfl-white);
+}
+
+/* Visually hidden status text */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Carousel responsiveness */
+
+@media (max-width: 650px) {
+  .carousel {
+    --carousel-edge-space: 2.75rem;
+    height: 620px;
+  }
+
+  .carousel-slide {
+    align-items: end;
+    padding-block: 4rem 5rem;
+    padding-inline: var(--carousel-edge-space);
+  }
+
+  .carousel-bottom-controls {
+    bottom: 1rem;
+    gap: 0.75rem;
+  }
 }
 
 /* Buttons */
 
 .button {
   display: inline-block;
+  min-width: 12rem;
   padding: 0.8rem 1.25rem;
   border: 2px solid var(--accent);
+  background: var(--accent);
+  color: var(--bfl-white);
   font-weight: 700;
+  text-align: center;
   text-decoration: none;
 }
 
-.button-primary {
-  background: var(--accent);
-  color: var(--bfl-white);
-}
-
-.button-primary:hover {
+.button:hover {
   background: var(--bfl-navy);
   border-color: var(--bfl-navy);
+  color: var(--bfl-white);
 }
 
 .button-secondary {
   background: transparent;
-  color: var(--text-primary);
+  color: var(--accent);
 }
 
 .button-secondary:hover {
-  background: var(--surface-muted);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bfl-white);
 }
 
 .button:focus-visible,
@@ -98,22 +332,6 @@
 .section-heading > p:last-child {
   margin-bottom: 0;
   color: var(--text-secondary);
-}
-
-/* Official status */
-
-.official-status {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.official-status h2 {
-  margin: 0 0 0.75rem;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-}
-
-.official-status p:last-child {
-  margin-bottom: 0;
 }
 
 /* Founding business */
