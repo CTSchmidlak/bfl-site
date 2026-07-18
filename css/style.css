@@ -126,6 +126,8 @@ a {
   border-top: 1px solid rgb(247 242 232 / 18%);
   background: var(--bfl-blue);
   color: var(--bfl-white);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 .site-ticker-inner {
@@ -191,6 +193,8 @@ a {
 
 .ticker-item-text {
   color: var(--bfl-white);
+  font-size: inherit;
+  line-height: inherit;
 }
 
 .ticker-item:hover .ticker-item-text {
@@ -432,6 +436,11 @@ a {
 
   .ticker-item-label {
     font-size: 0.6rem;
+  }
+
+  .ticker-item-text {
+    font-size: 0.75rem;
+    line-height: 1;
   }
 
   .theme-toggle {
