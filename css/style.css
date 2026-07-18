@@ -120,6 +120,122 @@ a {
   outline-offset: 4px;
 }
 
+/* League ticker */
+
+.site-ticker {
+  border-top: 1px solid rgb(247 242 232 / 18%);
+  background: var(--bfl-blue);
+  color: var(--bfl-white);
+}
+
+.site-ticker-inner {
+  width: min(var(--site-width), calc(100% - 2rem));
+  min-height: 2rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ticker-label {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0.15rem 0.5rem;
+  background: var(--bfl-red);
+  color: var(--bfl-white);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.ticker-window {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 1.5rem, black calc(100% - 1.5rem), transparent);
+}
+
+.ticker-track {
+  width: max-content;
+  display: flex;
+  animation: ticker-scroll var(--ticker-duration, 36s) linear infinite;
+}
+
+.ticker-group {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  color: var(--bfl-white);
+  font-size: 0.85rem;
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.ticker-item-label {
+  color: var(--bfl-cream);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ticker-item-text {
+  color: var(--bfl-white);
+}
+
+.ticker-item:hover .ticker-item-text {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.ticker-loading {
+  color: var(--bfl-cream);
+  font-size: 0.8rem;
+}
+
+.site-ticker:hover .ticker-track,
+.site-ticker:focus-within .ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-window {
+    overflow: visible;
+    mask-image: none;
+  }
+
+  .ticker-track {
+    width: auto;
+    animation: none;
+  }
+
+  .ticker-group {
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
+    padding: 0.35rem 0;
+  }
+
+  .ticker-group[aria-hidden="true"] {
+    display: none;
+  }
+}
+
 /* Dark-light mode control */
 
 .theme-toggle {
@@ -298,6 +414,24 @@ a {
   .site-nav a {
     padding: 0.2rem 0;
     border-bottom-width: 2px;
+  }
+
+  .site-ticker-inner {
+    min-height: 1.65rem;
+    gap: 0.6rem;
+  }
+
+  .ticker-label {
+    padding: 0.1rem 0.35rem;
+    font-size: 0.6rem;
+  }
+
+  .ticker-item {
+    font-size: 0.75rem;
+  }
+
+  .ticker-item-label {
+    font-size: 0.6rem;
   }
 
   .theme-toggle {

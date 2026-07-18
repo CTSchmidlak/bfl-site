@@ -1,0 +1,20 @@
+[
+  {
+    "label": "Notice",
+    "text": "League dues are due before Draft Day.",
+    "url": "/league-office/",
+    "active": true
+  },
+  {
+    "label": "Calendar",
+    "text": "Draft Day and opening week dates will be posted after approval by the League Office.",
+    "url": "/calendar/",
+    "active": true
+  },
+  {
+    "label": "Franchises",
+    "text": "Expansion bids for founding franchises are now under review.",
+    "url": "/franchises/",
+    "active": true
+  }
+]
