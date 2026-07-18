@@ -1,0 +1,25 @@
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-logo" href="/">
+      <img src="/images/logo/BFL_letters_white.svg" alt="Bureaucrat Football League" />
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="/" {% if page.nav == "home" %}aria-current="page"{% endif %}>Home</a>
+
+      <a href="/about/" {% if page.nav == "about" %}aria-current="page"{% endif %}>About</a>
+
+      <a href="/franchises/" {% if page.nav == "franchises" %}aria-current="page"{% endif %}>Franchises</a>
+
+      <a href="/league-office/" {% if page.nav == "league-office" %}aria-current="page"{% endif %}>League Office</a>
+
+      <a href="/calendar/" {% if page.nav == "calendar" %}aria-current="page"{% endif %}>Calendar</a>
+
+      <a href="/records/" {% if page.nav == "records" %}aria-current="page"{% endif %}>Records</a>
+    </nav>
+
+    {% include theme-toggle.html %}
+  </div>
+
+  {% include ticker.html %}
+</header>

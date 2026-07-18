@@ -1,0 +1,14 @@
+{
+  "files.associations": {
+    "**/*.html": "liquid"
+  },
+
+  "emmet.includeLanguages": {
+    "liquid": "html"
+  },
+
+  "[liquid]": {
+    "editor.defaultFormatter": "sissel.shopify-liquid",
+    "editor.formatOnSave": true
+  }
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+
+    <title>{% if page.title == "Home" %}{{ site.title }}{% else %}{{ page.title }} | {{ site.title }}{% endif %}</title>
+
+    <link rel="icon" href="/images/logo/BFL_letters_white.svg" type="image/svg+xml" sizes="any" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700..900&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <script>
+      try {
+        const savedTheme = localStorage.getItem("bfl-theme");
+
+        if (savedTheme === "light" || savedTheme === "dark") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch {}
+    </script>
+
+    <link rel="stylesheet" href="/css/style.css" />
+
+    {% if page.home %}
+    <link rel="stylesheet" href="/css/home.css" />
+    {% endif %}
+  </head>
+
+  <body>
+    {% include header.html %} {{ content }} {% include footer.html %} {% if page.home %}
+    <script src="/scripts/carousel.js"></script>
+    {% endif %}
+
+    <script src="/scripts/ticker.js"></script>
+    <script src="/scripts/theme.js"></script>
+  </body>
+</html>
