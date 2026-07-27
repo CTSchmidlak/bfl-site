@@ -2,12 +2,43 @@
 layout: default
 title: Franchises
 nav: franchises
+styles:
+  - /css/franchises.css
+scripts:
+  - /scripts/franchises.js
 ---
+<main class="page franchises-page">
+  <section class="franchises-hero">
+    <p class="eyebrow">Franchise Directory</p>
+    <h1>BFL Franchises</h1>
+    <p>
+      Meet the founding franchises of the Bureaucrat Football League. Team names, icons, and
+      current-season information will be pulled from Yahoo as owners join the league.
+    </p>
+  </section>
 
-<main class="page">
-  <section class="placeholder">
-    <p class="eyebrow">Franchises</p>
-    <h1>Franchise Directory</h1>
-    <p>Founding franchise records are pending certification by the League Office.</p>
+  <section class="franchise-section" aria-labelledby="current-franchises-heading">
+    <div class="section-heading">
+      <p class="eyebrow">Current Teams</p>
+      <h2 id="current-franchises-heading">Franchise Directory</h2>
+      <p>Rosters, standings, and records will appear as the inaugural season begins.</p>
+    </div>
+
+    <div class="franchise-grid" data-franchise-grid>
+      <article class="franchise-card franchise-card-loading">
+        <p>Loading franchises…</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="franchise-section franchise-empty-state">
+    <div class="section-heading">
+      <p class="eyebrow">Historical Records</p>
+      <h2>Trophy Case & Franchise Records</h2>
+      <p>
+        Championships, awards, weekly scoring records, and other franchise history will be recorded
+        here after official BFL games are played.
+      </p>
+    </div>
   </section>
 </main>

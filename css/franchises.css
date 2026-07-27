@@ -1,0 +1,129 @@
+/* Franchises page */
+
+.franchises-page {
+  width: min(var(--site-width), calc(100% - 2rem));
+}
+
+.franchises-hero {
+  max-width: 760px;
+  margin-bottom: 4rem;
+}
+
+.franchises-hero h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 7vw, 4.75rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.franchises-hero p:last-child {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.franchise-section {
+  margin-top: 4rem;
+}
+
+.franchise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.franchise-card {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  border-top: 5px solid var(--accent);
+  background: var(--surface);
+}
+
+.franchise-logo {
+  width: 76px;
+  height: 76px;
+  margin-bottom: 1.25rem;
+  object-fit: contain;
+}
+
+.franchise-status {
+  width: fit-content;
+  margin: 0 0 0.75rem;
+  padding: 0.2rem 0.45rem;
+  background: var(--bfl-navy);
+  color: var(--bfl-white);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.franchise-card h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.05;
+}
+
+.franchise-owner {
+  margin: 0.5rem 0 1.25rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.franchise-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.9rem;
+  margin: 0 0 1.5rem;
+}
+
+.franchise-stats div {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.franchise-stats dt {
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.franchise-stats dd {
+  margin: 0.2rem 0 0;
+  font-weight: 800;
+}
+
+.franchise-card .text-link {
+  margin-top: auto;
+}
+
+.franchise-card-loading {
+  color: var(--text-secondary);
+}
+
+.franchise-empty-state {
+  max-width: 760px;
+  padding-top: 2rem;
+  border-top: 3px solid var(--accent);
+}
+
+@media (max-width: 850px) {
+  .franchise-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .franchise-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .franchise-stats {
+    grid-template-columns: 1fr;
+  }
+}
