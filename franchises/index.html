@@ -4,41 +4,88 @@ title: Franchises
 nav: franchises
 styles:
   - /css/franchises.css
-scripts:
-  - /scripts/franchises.js
 ---
 <main class="page franchises-page">
   <section class="franchises-hero">
-    <p class="eyebrow">Franchise Directory</p>
+    <p class="eyebrow">League Directory</p>
     <h1>BFL Franchises</h1>
     <p>
-      Meet the founding franchises of the Bureaucrat Football League. Team names, icons, and
-      current-season information will be pulled from Yahoo as owners join the league.
+      Browse the founding franchises of the Bureaucrat Football League. Each card links to a team
+      page with franchise history, records, rosters, and season details.
     </p>
   </section>
 
-  <section class="franchise-section" aria-labelledby="current-franchises-heading">
-    <div class="section-heading">
-      <p class="eyebrow">Current Teams</p>
-      <h2 id="current-franchises-heading">Franchise Directory</h2>
-      <p>Rosters, standings, and records will appear as the inaugural season begins.</p>
-    </div>
+  <section class="franchise-section" aria-label="BFL franchise directory">
+    <div class="franchise-grid">
+      {% assign conferences = site.data.franchises | group_by: 'conference' %}
 
-    <div class="franchise-grid" data-franchise-grid>
-      <article class="franchise-card franchise-card-loading">
-        <p>Loading franchises…</p>
-      </article>
-    </div>
-  </section>
+      {% for conference in conferences %}
+        <section class="conference-group">
+          <h2 class="conference-heading">{{ conference.name | default: 'Independent' }}</h2>
 
-  <section class="franchise-section franchise-empty-state">
-    <div class="section-heading">
-      <p class="eyebrow">Historical Records</p>
-      <h2>Trophy Case & Franchise Records</h2>
-      <p>
-        Championships, awards, weekly scoring records, and other franchise history will be recorded
-        here after official BFL games are played.
-      </p>
+          <div class="franchise-list">
+            {% for franchise in conference.items %}
+              {% assign team_name = franchise.teamName | default: 'Pending Franchise' %}
+              {% assign owner_name = franchise.ownerName | default: 'Pending' %}
+              {% assign logo = franchise.logo | default: '/images/logo/BFL_letters_white.svg' %}
+              {% assign team_color = franchise.primaryColor | default: '#1c293b' %}
+              {% assign all_time_record = franchise.allTimeRecord | default: '0-0' %}
+              {% assign win_percentage = franchise.winPercentage | default: '.000' %}
+              {% if win_percentage == '—' %}
+                {% assign win_percentage = '.000' %}
+              {% endif %}
+              {% assign seasons = franchise.seasons | default: 0 %}
+              {% assign championships = franchise.championships | default: 0 %}
+
+              {% if franchise.url %}
+                <a
+                  class="franchise-row"
+                  href="{{ franchise.url }}"
+                  aria-label="View {{ team_name }} franchise page"
+                  style="--team-color: {{ team_color }}; --team-logo: url('{{ logo }}')"
+                >
+              {% else %}
+                <article
+                  class="franchise-row"
+                  style="--team-color: {{ team_color }}; --team-logo: url('{{ logo }}')"
+                >
+              {% endif %}
+
+              <div class="franchise-logo-wrap">
+                <img class="franchise-logo" src="{{ logo }}" alt="{{ team_name }} logo" />
+              </div>
+
+              <div class="franchise-main">
+                <h3>{{ team_name }}</h3>
+                <p class="franchise-meta">Owner: {{ owner_name }}</p>
+              </div>
+
+              <dl class="franchise-stats">
+                <div>
+                  <dt>All-Time Record</dt>
+                  <dd>{{ all_time_record }} ({{ win_percentage }})</dd>
+                </div>
+
+                <div>
+                  <dt>Seasons</dt>
+                  <dd>{{ seasons }}</dd>
+                </div>
+
+                <div>
+                  <dt>Championships</dt>
+                  <dd>{{ championships }}</dd>
+                </div>
+              </dl>
+
+              {% if franchise.url %}
+                </a>
+              {% else %}
+                </article>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </section>
+      {% endfor %}
     </div>
   </section>
 </main>

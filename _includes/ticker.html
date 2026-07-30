@@ -1,11 +1,80 @@
-<div class="site-ticker" data-ticker aria-label="League ticker">
-  <div class="site-ticker-inner">
-    <p class="ticker-label">League Wire</p>
+{% assign active_count = 0 %}
 
-    <div class="ticker-window">
-      <div class="ticker-track" data-ticker-track>
-        <span class="ticker-loading">Loading league notices…</span>
+{% for item in site.data.ticker %}
+  {% if item.active != false %}
+    {% assign active_count = active_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+{% if active_count > 0 %}
+  {% assign ticker_duration = active_count | times: 8 %}
+
+  {% if ticker_duration < 28 %}
+    {% assign ticker_duration = 28 %}
+  {% endif %}
+
+  <div class="site-ticker" data-ticker aria-label="League ticker">
+    <div class="site-ticker-inner">
+      <p class="ticker-label">League Wire</p>
+
+      <div class="ticker-window">
+        <div
+          class="ticker-track"
+          data-ticker-track
+          style="--ticker-duration: {{ ticker_duration }}s"
+        >
+          <div class="ticker-group">
+            {% for item in site.data.ticker %}
+              {% if item.active != false %}
+                {% if item.url %}
+                  <a
+                    class="ticker-item"
+                    href="{{ item.url }}"
+                    {% if item.url contains 'http' %}
+                      target="_blank"
+                      rel="noopener"
+                    {% endif %}
+                  >
+                    <span class="ticker-item-label">{{ item.label }}</span>
+                    <span class="ticker-item-text">{{ item.text }}</span>
+                  </a>
+                {% else %}
+                  <span class="ticker-item">
+                    <span class="ticker-item-label">{{ item.label }}</span>
+                    <span class="ticker-item-text">{{ item.text }}</span>
+                  </span>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="ticker-group" aria-hidden="true">
+            {% for item in site.data.ticker %}
+              {% if item.active != false %}
+                {% if item.url %}
+                  <a
+                    class="ticker-item"
+                    href="{{ item.url }}"
+                    tabindex="-1"
+                    {% if item.url contains 'http' %}
+                      target="_blank"
+                      rel="noopener"
+                    {% endif %}
+                  >
+                    <span class="ticker-item-label">{{ item.label }}</span>
+                    <span class="ticker-item-text">{{ item.text }}</span>
+                  </a>
+                {% else %}
+                  <span class="ticker-item">
+                    <span class="ticker-item-label">{{ item.label }}</span>
+                    <span class="ticker-item-text">{{ item.text }}</span>
+                  </span>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+{% endif %}

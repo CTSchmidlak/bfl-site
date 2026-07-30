@@ -5,125 +5,341 @@
 }
 
 .franchises-hero {
-  max-width: 760px;
-  margin-bottom: 4rem;
+  max-width: 780px;
+  margin-bottom: 3rem;
 }
 
 .franchises-hero h1 {
   margin: 0;
-  font-size: clamp(2.5rem, 7vw, 4.75rem);
+  font-size: clamp(2.4rem, 6vw, 4.25rem);
   line-height: 1;
   letter-spacing: -0.02em;
 }
 
 .franchises-hero p:last-child {
   color: var(--text-secondary);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 .franchise-section {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 .franchise-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  align-items: start;
 }
 
-.franchise-card {
-  display: flex;
-  min-height: 100%;
-  flex-direction: column;
-  padding: 1.5rem;
+.conference-group {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.conference-heading {
+  margin: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--accent);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1;
+}
+
+.franchise-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.franchise-row {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.3rem 0.9rem;
+  align-items: stretch;
+  align-content: center;
+
+  min-height: 168px;
+  padding: 0.85rem;
+
   border: 1px solid var(--border-color);
-  border-top: 5px solid var(--accent);
-  background: var(--surface);
+  background: var(--team-color);
+  color: var(--bfl-white);
+  text-decoration: none;
+}
+
+.franchise-row[href] {
+  cursor: pointer;
+}
+
+.franchise-row[href]:hover {
+  transform: translateY(-1px);
+}
+
+.franchise-row[href]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.franchise-row::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -2;
+
+  width: clamp(960px, 95vw, 1400px);
+  height: clamp(960px, 95vw, 1400px);
+
+  background-image: var(--team-logo);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  filter: grayscale(1);
+  opacity: 0.1;
+  transform: translate(-50%, -50%);
+}
+
+.franchise-row::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: rgb(0 0 0 / 18%);
+}
+
+.franchise-logo-wrap {
+  grid-row: 1 / span 2;
+
+  display: grid;
+  place-items: center;
+  align-self: center;
+
+  width: 150px;
+  height: 150px;
 }
 
 .franchise-logo {
-  width: 76px;
-  height: 76px;
-  margin-bottom: 1.25rem;
+  width: 142px;
+  height: 142px;
   object-fit: contain;
+  filter: drop-shadow(0 3px 5px rgb(0 0 0 / 50%));
 }
 
-.franchise-status {
-  width: fit-content;
-  margin: 0 0 0.75rem;
-  padding: 0.2rem 0.45rem;
-  background: var(--bfl-navy);
-  color: var(--bfl-white);
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  line-height: 1;
-  text-transform: uppercase;
+.franchise-main {
+  min-width: 0;
+  align-self: end;
+
+  padding: 0.55rem 0.65rem;
+  background: rgb(0 0 0 / 50%);
+  backdrop-filter: blur(2px);
 }
 
-.franchise-card h3 {
+.franchise-main h3 {
   margin: 0;
-  font-size: 1.6rem;
+  overflow: hidden;
+
+  color: var(--bfl-white);
+  font-size: 1.35rem;
   line-height: 1.05;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.franchise-owner {
-  margin: 0.5rem 0 1.25rem;
-  color: var(--text-secondary);
-  font-weight: 700;
+.franchise-meta {
+  margin: 0.25rem 0 0;
+  color: var(--bfl-cream);
+  font-size: 0.84rem;
+  font-weight: 800;
 }
 
 .franchise-stats {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.9rem;
-  margin: 0 0 1.5rem;
+  grid-template-columns: 1.35fr 0.8fr 1fr;
+  gap: 0.45rem;
+  align-self: start;
+
+  margin: 0;
 }
 
 .franchise-stats div {
-  padding-top: 0.75rem;
-  border-top: 1px solid var(--border-color);
+  min-width: 0;
+  padding: 0.55rem 0.6rem;
+  background: rgb(0 0 0 / 50%);
+  backdrop-filter: blur(2px);
 }
 
 .franchise-stats dt {
-  color: var(--text-secondary);
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  color: var(--bfl-cream);
+  font-size: 0.5rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
   text-transform: uppercase;
 }
 
 .franchise-stats dd {
-  margin: 0.2rem 0 0;
-  font-weight: 800;
+  margin: 0.18rem 0 0;
+  overflow: hidden;
+
+  color: var(--bfl-white);
+  font-size: 0.95rem;
+  font-weight: 900;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.franchise-card .text-link {
-  margin-top: auto;
+.franchise-row-loading {
+  grid-template-columns: 1fr;
+  color: var(--bfl-white);
 }
 
-.franchise-card-loading {
-  color: var(--text-secondary);
-}
+/* Tablet */
 
-.franchise-empty-state {
-  max-width: 760px;
-  padding-top: 2rem;
-  border-top: 3px solid var(--accent);
-}
-
-@media (max-width: 850px) {
+@media (max-width: 1000px) {
   .franchise-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
+  }
+
+  .franchise-row {
+    grid-template-columns: 176px 1fr;
+    min-height: 190px;
+    gap: 0.35rem 1rem;
+    align-content: center;
+    padding: 1rem;
+  }
+
+  .franchise-row::before {
+    width: min(2200px, 235vw);
+    height: min(2200px, 235vw);
+    opacity: 0.1;
+  }
+
+  .franchise-logo-wrap {
+    width: 176px;
+    height: 176px;
+  }
+
+  .franchise-logo {
+    width: 168px;
+    height: 168px;
+  }
+
+  .franchise-main h3 {
+    font-size: 1.45rem;
+  }
+
+  .franchise-meta {
+    font-size: 0.9rem;
   }
 }
 
+/* Mobile */
+
 @media (max-width: 620px) {
+  .franchises-hero {
+    margin-bottom: 2rem;
+  }
+
+  .franchise-section {
+    margin-top: 2.5rem;
+  }
+
   .franchise-grid {
-    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .franchise-row {
+    grid-template-columns: 128px 1fr;
+    gap: 0.3rem 0.65rem;
+    align-content: center;
+    min-height: 156px;
+    padding: 0.7rem;
+  }
+
+  .franchise-row::before {
+    width: 235vw;
+    height: 235vw;
+    opacity: 0.1;
+  }
+
+  .franchise-logo-wrap {
+    width: 128px;
+    height: 128px;
+  }
+
+  .franchise-logo {
+    width: 122px;
+    height: 122px;
+  }
+
+  .franchise-main {
+    padding: 0.5rem 0.58rem;
+  }
+
+  .franchise-main h3 {
+    font-size: 1.08rem;
+  }
+
+  .franchise-meta {
+    font-size: 0.78rem;
+  }
+
+  .franchise-stats {
+    grid-template-columns: 1.35fr 0.8fr 1fr;
+    gap: 0.38rem;
+  }
+
+  .franchise-stats div {
+    padding: 0.48rem 0.52rem;
+  }
+
+  .franchise-stats dt {
+    font-size: 0.46rem;
+  }
+
+  .franchise-stats dd {
+    font-size: 0.88rem;
+  }
+}
+
+/* Very narrow phones */
+
+@media (max-width: 430px) {
+  .franchise-row {
+    grid-template-columns: 112px 1fr;
+    padding: 0.65rem;
+  }
+
+  .franchise-logo-wrap {
+    width: 112px;
+    height: 112px;
+  }
+
+  .franchise-logo {
+    width: 106px;
+    height: 106px;
+  }
+
+  .franchise-main h3 {
+    font-size: 0.96rem;
+  }
+
+  .franchise-meta {
+    font-size: 0.74rem;
   }
 
   .franchise-stats {
     grid-template-columns: 1fr;
+  }
+
+  .franchise-stats div {
+    padding: 0.42rem 0.48rem;
   }
 }

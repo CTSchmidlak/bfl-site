@@ -1,0 +1,447 @@
+/* Individual franchise profile page */
+
+.franchise-profile-page {
+  width: min(var(--site-width), calc(100% - 2rem));
+}
+
+.profile-back-link {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  color: var(--accent);
+  font-weight: 800;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+.profile-back-link:hover {
+  color: var(--text-primary);
+}
+
+.profile-back-link:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* Hero */
+
+.franchise-profile-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 1.5rem;
+  align-items: center;
+
+  min-height: 300px;
+  padding: clamp(1rem, 3vw, 2rem);
+
+  border: 1px solid var(--border-color);
+  background: var(--team-color);
+  color: var(--bfl-white);
+}
+
+.franchise-profile-hero::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -2;
+
+  width: clamp(1100px, 105vw, 1600px);
+  height: clamp(1100px, 105vw, 1600px);
+
+  background-image: var(--team-logo);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  filter: grayscale(1);
+  opacity: 0.1;
+  transform: translate(-50%, -50%);
+}
+
+.franchise-profile-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background: rgb(0 0 0 / 22%);
+}
+
+.franchise-profile-logo-wrap {
+  display: grid;
+  place-items: center;
+}
+
+.franchise-profile-logo {
+  width: min(220px, 100%);
+  height: auto;
+  filter: drop-shadow(0 5px 8px rgb(0 0 0 / 55%));
+}
+
+.franchise-profile-identity {
+  width: fit-content;
+  max-width: 780px;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  background: rgb(0 0 0 / 52%);
+  backdrop-filter: blur(2px);
+}
+
+.franchise-profile-identity .eyebrow {
+  color: var(--bfl-cream);
+}
+
+.franchise-profile-identity h1 {
+  margin: 0;
+  color: var(--bfl-white);
+  font-size: clamp(2.4rem, 7vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+.franchise-owner {
+  margin: 0.75rem 0 0;
+  color: var(--bfl-cream);
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+/* Shared sections */
+
+.franchise-profile-section {
+  margin-top: 4.25rem;
+}
+
+.section-heading {
+  max-width: 780px;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 0.55rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.profile-panel,
+.profile-stat-grid div,
+.record-panel {
+  border: 1px solid var(--border-color);
+  border-top: 5px solid color-mix(in srgb, var(--team-color) 55%, var(--bfl-cream));
+  background: var(--surface);
+}
+
+.profile-panel {
+  padding: 1.5rem;
+}
+
+.profile-panel h2,
+.profile-panel h3 {
+  margin: 0;
+  font-size: clamp(1.45rem, 2.6vw, 2rem);
+  line-height: 1.05;
+}
+
+.profile-panel p {
+  color: var(--text-secondary);
+}
+
+.profile-placeholder {
+  margin-top: 1.35rem;
+  padding: 1rem;
+  border: 1px dashed var(--border-color);
+  background: var(--surface-muted);
+}
+
+.profile-placeholder p {
+  margin: 0;
+}
+
+/* At a glance */
+
+.profile-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.profile-stat-grid div {
+  padding: 1rem;
+}
+
+.profile-stat-grid dt,
+.compact-stat-list dt,
+.record-list dt {
+  color: var(--text-secondary);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.profile-stat-grid dd {
+  margin: 0.4rem 0 0;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* Season / roster / draft cards */
+
+.profile-season-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.panel-heading-row {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.panel-heading-row .eyebrow {
+  margin-bottom: 0.55rem;
+}
+
+.panel-heading-row select {
+  flex: 0 0 auto;
+  max-width: 7rem;
+  margin-top: 0.1rem;
+  padding: 0.35rem 0.45rem;
+
+  border: 1px solid var(--border-color);
+  background: var(--surface-muted);
+  color: var(--text-primary);
+
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.panel-heading-row select:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Compact stat lists */
+
+.compact-stat-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.35rem 0 0;
+}
+
+.compact-stat-list div {
+  display: grid;
+  grid-template-columns: minmax(130px, 0.85fr) 1fr;
+  gap: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.compact-stat-list dd {
+  margin: 0;
+  font-weight: 900;
+}
+
+/* Franchise records */
+
+.record-category-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.record-panel {
+  padding: 1.5rem;
+}
+
+.record-panel h3 {
+  margin: 0 0 1.15rem;
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  line-height: 1.05;
+}
+
+.record-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.record-list div {
+  min-width: 0;
+  padding: 0.85rem;
+  border: 1px solid var(--border-color);
+  background: var(--surface-muted);
+}
+
+.record-list dd {
+  margin: 0.28rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 1.1;
+}
+
+.record-list .record-context {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+  .franchise-profile-hero {
+    grid-template-columns: 180px 1fr;
+  }
+
+  .franchise-profile-logo {
+    width: 180px;
+  }
+
+  .profile-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-season-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .record-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 620px) {
+  .franchise-profile-hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .franchise-profile-hero::before {
+    width: 235vw;
+    height: 235vw;
+  }
+
+  .franchise-profile-logo-wrap {
+    justify-content: start;
+  }
+
+  .franchise-profile-logo {
+    width: 150px;
+  }
+
+  .franchise-profile-identity {
+    width: auto;
+  }
+
+  .franchise-profile-identity h1 {
+    font-size: clamp(2.1rem, 12vw, 3.25rem);
+  }
+
+  .franchise-owner {
+    font-size: 0.95rem;
+  }
+
+  .franchise-profile-section {
+    margin-top: 3.25rem;
+  }
+
+  .section-heading {
+    margin-bottom: 1.1rem;
+  }
+
+  .section-heading .eyebrow {
+    margin-bottom: 0.45rem;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.65rem, 9vw, 2.25rem);
+  }
+
+  .profile-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-stat-grid div {
+    padding: 1rem;
+  }
+
+  .profile-panel,
+  .record-panel {
+    padding: 1.15rem;
+  }
+
+  .panel-heading-row {
+    align-items: start;
+    gap: 1rem;
+  }
+
+  .panel-heading-row .eyebrow {
+    margin-bottom: 0.45rem;
+  }
+
+  .panel-heading-row select {
+    max-width: 6.25rem;
+    font-size: 0.8rem;
+  }
+
+  .compact-stat-list {
+    margin-top: 1.15rem;
+  }
+
+  .compact-stat-list div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .record-list {
+    grid-template-columns: 1fr;
+  }
+
+  .record-list dd {
+    font-size: 1rem;
+  }
+
+  .record-list .record-context {
+    font-size: 0.8rem;
+  }
+}
+
+/* Very narrow phones */
+
+@media (max-width: 430px) {
+  .profile-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .franchise-profile-logo {
+    width: 132px;
+  }
+
+  .panel-heading-row {
+    display: grid;
+  }
+
+  .panel-heading-row select {
+    width: fit-content;
+    max-width: none;
+  }
+}

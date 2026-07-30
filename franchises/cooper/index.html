@@ -1,0 +1,332 @@
+---
+layout: default
+title: Your Yahoo Team Name
+nav: franchises
+styles:
+  - /css/franchise-profile.css
+scripts:
+  - /scripts/franchise-profile.js
+permalink: /franchises/cooper/
+franchise_id: cooper
+---
+{% assign franchise = site.data.franchises | where: 'id', page.franchise_id | first %}
+
+{% assign team_name = franchise.teamName | default: page.title %}
+{% assign owner_name = franchise.ownerName | default: 'Pending' %}
+{% assign conference = franchise.conference | default: 'Independent' %}
+{% assign team_logo = franchise.logo | default: '/images/logo/BFL_logo.svg' %}
+{% assign team_color = franchise.primaryColor | default: '#1c293b' %}
+{% assign established = franchise.established | default: '2026' %}
+{% assign all_time_record = franchise.allTimeRecord | default: '0-0' %}
+{% assign win_percentage = franchise.winPercentage | default: '.000' %}
+{% if win_percentage == '—' %}
+  {% assign win_percentage = '.000' %}
+{% endif %}
+{% assign seasons = franchise.seasons | default: 0 %}
+{% assign championships = franchise.championships | default: 0 %}
+{% assign playoff_appearances = franchise.playoffAppearances | default: 0 %}
+
+<main
+  class="page franchise-profile-page"
+  style="--team-color: {{ team_color }}; --team-logo: url('{{ team_logo }}')"
+>
+  <a class="profile-back-link" href="/franchises/">← Back to Franchises</a>
+
+  <section class="franchise-profile-hero">
+    <div class="franchise-profile-logo-wrap">
+      <img class="franchise-profile-logo" src="{{ team_logo }}" alt="{{ team_name }} logo" />
+    </div>
+
+    <div class="franchise-profile-identity">
+      <p class="eyebrow">{{ conference }}</p>
+      <h1>{{ team_name }}</h1>
+      <p class="franchise-owner">Owner: {{ owner_name }}</p>
+    </div>
+  </section>
+
+  <section class="franchise-profile-section" aria-labelledby="franchise-summary-heading">
+    <div class="section-heading">
+      <p class="eyebrow">Franchise Profile</p>
+      <h2 id="franchise-summary-heading">At a Glance</h2>
+    </div>
+
+    <dl class="profile-stat-grid">
+      <div>
+        <dt>Established</dt>
+        <dd>{{ established }}</dd>
+      </div>
+
+      <div>
+        <dt>All-Time Record</dt>
+        <dd>{{ all_time_record }} ({{ win_percentage }})</dd>
+      </div>
+
+      <div>
+        <dt>Seasons</dt>
+        <dd>{{ seasons }}</dd>
+      </div>
+
+      <div>
+        <dt>Championships</dt>
+        <dd>{{ championships }}</dd>
+      </div>
+
+      <div>
+        <dt>Playoff Appearances</dt>
+        <dd>{{ playoff_appearances }}</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="franchise-profile-section" aria-labelledby="franchise-history-heading">
+    <div class="section-heading">
+      <p class="eyebrow">Season Archive</p>
+      <h2 id="franchise-history-heading">Franchise History</h2>
+    </div>
+
+    <div class="profile-season-grid">
+      <article class="profile-panel season-panel" data-season-group>
+        <div class="panel-heading-row">
+          <div>
+            <p class="eyebrow">Season History</p>
+            <h3>2026 Season</h3>
+          </div>
+
+          <select data-season-select aria-label="Select season">
+            <option value="2026">2026</option>
+          </select>
+        </div>
+
+        <div data-season-panel="2026">
+          <dl class="compact-stat-list">
+            <div>
+              <dt>Season Status</dt>
+              <dd>Preseason</dd>
+            </div>
+
+            <div>
+              <dt>Regular Season</dt>
+              <dd>Draft pending</dd>
+            </div>
+
+            <div>
+              <dt>Win Percentage</dt>
+              <dd>—</dd>
+            </div>
+
+            <div>
+              <dt>Points For</dt>
+              <dd>—</dd>
+            </div>
+
+            <div>
+              <dt>Points Against</dt>
+              <dd>—</dd>
+            </div>
+
+            <div>
+              <dt>Finish</dt>
+              <dd>Preseason</dd>
+            </div>
+
+            <div>
+              <dt>Playoffs</dt>
+              <dd>—</dd>
+            </div>
+          </dl>
+        </div>
+      </article>
+
+      <article class="profile-panel season-panel" data-season-group>
+        <div class="panel-heading-row">
+          <div>
+            <p class="eyebrow">Roster History</p>
+            <h3>2026 Roster</h3>
+          </div>
+
+          <select data-season-select aria-label="Select roster season">
+            <option value="2026">2026</option>
+          </select>
+        </div>
+
+        <div data-season-panel="2026">
+          <div class="profile-placeholder">
+            <p>
+              Current roster information will appear after the inaugural draft. After the season,
+              this section will preserve the franchise’s final 2026 roster.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <article class="profile-panel season-panel" data-season-group>
+        <div class="panel-heading-row">
+          <div>
+            <p class="eyebrow">Draft History</p>
+            <h3>2026 Draft</h3>
+          </div>
+
+          <select data-season-select aria-label="Select draft season">
+            <option value="2026">2026</option>
+          </select>
+        </div>
+
+        <div data-season-panel="2026">
+          <div class="profile-placeholder">
+            <p>Draft results will appear after the inaugural BFL draft.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="franchise-profile-section" aria-labelledby="franchise-honors-heading">
+    <div class="section-heading">
+      <p class="eyebrow">Honors</p>
+      <h2 id="franchise-honors-heading">Trophy Case</h2>
+    </div>
+
+    <article class="profile-panel">
+      <h3>Championships & Awards</h3>
+
+      <div class="profile-placeholder">
+        <p>No official BFL honors have been awarded yet.</p>
+      </div>
+    </article>
+  </section>
+
+  <section class="franchise-profile-section" aria-labelledby="franchise-records-heading">
+    <div class="section-heading">
+      <p class="eyebrow">All-Time Marks</p>
+      <h2 id="franchise-records-heading">Franchise Records</h2>
+    </div>
+
+    <div class="record-category-grid">
+      <article class="record-panel">
+        <h3>Team Scoring</h3>
+
+        <dl class="record-list">
+          <div>
+            <dt>All-Time Points For</dt>
+            <dd>—</dd>
+            <dd class="record-context">Cumulative franchise total.</dd>
+          </div>
+
+          <div>
+            <dt>All-Time Points Against</dt>
+            <dd>—</dd>
+            <dd class="record-context">Cumulative franchise total.</dd>
+          </div>
+
+          <div>
+            <dt>All-Time Point Differential</dt>
+            <dd>—</dd>
+            <dd class="record-context">Points for minus points against.</dd>
+          </div>
+
+          <div>
+            <dt>Highest Team Score</dt>
+            <dd>—</dd>
+            <dd class="record-context">Opponent, week, and season pending.</dd>
+          </div>
+
+          <div>
+            <dt>Lowest Team Score</dt>
+            <dd>—</dd>
+            <dd class="record-context">Opponent, week, and season pending.</dd>
+          </div>
+
+          <div>
+            <dt>Largest Margin of Victory</dt>
+            <dd>—</dd>
+            <dd class="record-context">Score, opponent, week, and season pending.</dd>
+          </div>
+
+          <div>
+            <dt>Largest Margin of Defeat</dt>
+            <dd>—</dd>
+            <dd class="record-context">Score, opponent, week, and season pending.</dd>
+          </div>
+
+          <div>
+            <dt>Narrowest Margin of Victory</dt>
+            <dd>—</dd>
+            <dd class="record-context">Score, opponent, week, and season pending.</dd>
+          </div>
+
+          <div>
+            <dt>Narrowest Margin of Defeat</dt>
+            <dd>—</dd>
+            <dd class="record-context">Score, opponent, week, and season pending.</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="record-panel">
+        <h3>Player Records</h3>
+
+        <dl class="record-list">
+          <div>
+            <dt>Highest Scoring Player, Week</dt>
+            <dd>—</dd>
+            <dd class="record-context">Player, position, points, week, and season pending.</dd>
+          </div>
+
+          <div>
+            <dt>Highest Scoring Player, Season</dt>
+            <dd>—</dd>
+            <dd class="record-context">Player, position, points, and season pending.</dd>
+          </div>
+
+          <div>
+            <dt>Franchise Career Points Leader</dt>
+            <dd>—</dd>
+            <dd class="record-context">Player, position, total points, and seasons pending.</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="record-panel">
+        <h3>Season Records</h3>
+
+        <dl class="record-list">
+          <div>
+            <dt>Best Season</dt>
+            <dd>—</dd>
+            <dd class="record-context">Record, win percentage, finish, and season pending.</dd>
+          </div>
+
+          <div>
+            <dt>Worst Season</dt>
+            <dd>—</dd>
+            <dd class="record-context">Record, win percentage, finish, and season pending.</dd>
+          </div>
+
+          <div>
+            <dt>Most Points For, Season</dt>
+            <dd>—</dd>
+            <dd class="record-context">Season pending.</dd>
+          </div>
+
+          <div>
+            <dt>Most Points Against, Season</dt>
+            <dd>—</dd>
+            <dd class="record-context">Season pending.</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="record-panel">
+        <h3>Draft Records</h3>
+
+        <dl class="record-list">
+          <div>
+            <dt>Highest Draft Pick</dt>
+            <dd>—</dd>
+            <dd class="record-context">Player, position, pick number, and season pending.</dd>
+          </div>
+        </dl>
+      </article>
+    </div>
+  </section>
+</main>

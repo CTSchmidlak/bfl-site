@@ -1,0 +1,44 @@
+[
+  {
+    "id": "cooper",
+    "teamName": "Your Yahoo Team Name",
+    "ownerName": "Cooper",
+    "conference": "Conference A",
+    "logo": "/images/logo/BFL_logo.svg",
+    "primaryColor": "#3366AA",
+    "allTimeRecord": "0-0",
+    "winPercentage": "—",
+    "seasons": 0,
+    "championships": 0,
+    "url": "/franchises/cooper/",
+    "yahooTeamKey": null
+  },
+  {
+    "id": "pending-a",
+    "teamName": "Pending Franchise",
+    "ownerName": "Pending",
+    "conference": "Conference B",
+    "logo": "/images/logo/BFL_letters_white.svg",
+    "primaryColor": "#9e312e",
+    "allTimeRecord": "0-0",
+    "winPercentage": "—",
+    "seasons": 0,
+    "championships": 0,
+    "url": null,
+    "yahooTeamKey": null
+  },
+  {
+    "id": "pending-b",
+    "teamName": "Pending Franchise",
+    "ownerName": "Pending",
+    "conference": "Conference B",
+    "logo": "/images/logo/franchise_logo_test.svg",
+    "primaryColor": "#111111",
+    "allTimeRecord": "0-0",
+    "winPercentage": "—",
+    "seasons": 0,
+    "championships": 0,
+    "url": null,
+    "yahooTeamKey": null
+  }
+]
