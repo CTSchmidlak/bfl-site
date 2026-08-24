@@ -1,0 +1,434 @@
+/* League Office pages */
+
+.league-office-page {
+  width: min(var(--site-width), calc(100% - 2rem));
+}
+
+.league-office-hero {
+  --office-seal-size: clamp(28rem, 46vw, 40rem);
+  --office-seal-left: 80%;
+  --office-seal-top: 48%;
+  --office-seal-opacity: 0.1;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: grid;
+  height: clamp(320px, 30vw, 360px);
+  padding: clamp(1.25rem, 4vw, 2.25rem);
+
+  border: 1px solid var(--border-color);
+  border-top: 6px solid var(--accent);
+  background: linear-gradient(135deg, rgb(0 0 0 / 58%), rgb(0 0 0 / 16%)), var(--bfl-blue);
+  color: var(--bfl-white);
+}
+
+.league-office-hero::before {
+  content: "";
+  position: absolute;
+  top: var(--office-seal-top);
+  left: var(--office-seal-left);
+  z-index: 0;
+
+  width: var(--office-seal-size);
+  aspect-ratio: 1 / 1;
+
+  background-image: url("/images/logo/BFL_seal.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  opacity: var(--office-seal-opacity);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.league-office-hero > div {
+  position: relative;
+  z-index: 1;
+
+  max-width: 850px;
+  align-self: end;
+}
+
+.league-office-hero .eyebrow {
+  color: var(--bfl-cream);
+}
+
+.league-office-hero h1 {
+  margin: 0;
+  color: var(--bfl-white);
+  font-size: clamp(2.4rem, 6vw, 4.9rem);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
+.league-office-hero p:last-child {
+  max-width: 760px;
+  color: var(--bfl-cream);
+  font-size: 1.08rem;
+}
+
+.office-alert-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.office-alert,
+.meeting-summary-card,
+.office-function-card,
+.board-meeting-card {
+  border: 1px solid var(--border-color);
+  border-top: 5px solid var(--accent);
+  background: var(--surface);
+}
+
+.office-alert {
+  padding: 1.35rem;
+}
+
+.office-alert-primary {
+  border-top-color: var(--bfl-red);
+  background: var(--surface);
+}
+
+.office-alert h2 {
+  margin: 0;
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  line-height: 1;
+}
+
+.office-alert p {
+  color: var(--text-secondary);
+}
+
+.office-alert-date {
+  margin: 0.7rem 0;
+  color: var(--text-primary) !important;
+  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+/* Shared sections */
+
+.office-section {
+  margin-top: 4rem;
+}
+
+.section-heading {
+  max-width: 820px;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 0.55rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+/* Latest meeting */
+
+.meeting-summary-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.75fr);
+  gap: 1.25rem;
+  padding: 1.5rem;
+}
+
+.meeting-summary-main h3 {
+  margin: 0;
+  font-size: clamp(1.65rem, 3.5vw, 2.5rem);
+  line-height: 1;
+}
+
+.meeting-summary-main p,
+.meeting-summary-side p,
+.board-meeting-summary {
+  color: var(--text-secondary);
+}
+
+.meeting-date {
+  margin: 0 0 0.45rem;
+  color: var(--accent) !important;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.meeting-summary-side {
+  padding: 1rem;
+  background: var(--surface-muted);
+}
+
+.meeting-summary-side h4,
+.board-meeting-card h4 {
+  margin: 0 0 0.85rem;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.office-check-list,
+.office-action-list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.office-check-list li,
+.office-action-list li {
+  position: relative;
+  padding-left: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.35;
+}
+
+.office-check-list li::before,
+.office-action-list li::before {
+  content: "";
+  position: absolute;
+  top: 0.55em;
+  left: 0;
+
+  width: 0.45rem;
+  height: 0.45rem;
+
+  background: var(--accent);
+}
+
+.office-action-list li::before {
+  background: var(--bfl-red);
+}
+
+.office-button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.2rem;
+}
+
+.office-button,
+.office-function-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  min-height: 2.6rem;
+  padding: 0.68rem 0.9rem;
+
+  border: 2px solid var(--accent);
+  background: var(--accent);
+  color: var(--button-text, var(--bfl-black));
+
+  font-weight: 900;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.office-button:hover,
+.office-function-card a:hover {
+  transform: translateY(-1px);
+}
+
+.office-button:focus-visible,
+.office-function-card a:focus-visible,
+.office-back-link:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.office-button-secondary {
+  background: transparent;
+  color: var(--text-primary);
+}
+
+/* Office functions */
+
+.office-function-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.office-function-card {
+  display: grid;
+  gap: 0.9rem;
+  align-content: start;
+  padding: 1.35rem;
+}
+
+.office-function-card h3 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  line-height: 1;
+}
+
+.office-function-card p {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.office-function-card span {
+  width: fit-content;
+  padding: 0.45rem 0.6rem;
+  background: var(--surface-muted);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Board archive */
+
+.office-back-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  color: var(--accent);
+  font-weight: 800;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+}
+
+.office-back-link:hover {
+  color: var(--text-primary);
+}
+
+.board-meeting-list {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.board-meeting-card {
+  padding: 1.5rem;
+}
+
+.board-meeting-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+}
+
+.board-meeting-card-header h3 {
+  margin: 0;
+  font-size: clamp(1.65rem, 3.5vw, 2.45rem);
+  line-height: 1;
+}
+
+.board-meeting-summary {
+  max-width: 880px;
+  margin: 1rem 0 0;
+}
+
+.board-meeting-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.board-meeting-detail-grid section {
+  padding: 1rem;
+  background: var(--surface-muted);
+}
+
+/* Tablet */
+
+@media (max-width: 1000px) {
+  .league-office-hero {
+    --office-seal-size: clamp(24rem, 62vw, 34rem);
+    --office-seal-left: 78%;
+    --office-seal-top: 50%;
+
+    height: 330px;
+  }
+
+  .office-alert-grid,
+  .meeting-summary-card,
+  .office-function-grid,
+  .board-meeting-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .meeting-summary-card {
+    gap: 1rem;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 620px) {
+  .league-office-hero {
+    --office-seal-size: 21rem;
+    --office-seal-left: 70%;
+    --office-seal-top: 50%;
+    --office-seal-opacity: 0.075;
+
+    min-height: 300px;
+    height: auto;
+  }
+
+  .league-office-hero h1 {
+    font-size: clamp(2.1rem, 12vw, 3.25rem);
+  }
+
+  .league-office-hero p:last-child {
+    font-size: 1rem;
+  }
+
+  .office-section {
+    margin-top: 3.25rem;
+  }
+
+  .section-heading {
+    margin-bottom: 1.1rem;
+  }
+
+  .office-alert,
+  .meeting-summary-card,
+  .office-function-card,
+  .board-meeting-card {
+    padding: 1.15rem;
+  }
+
+  .board-meeting-card-header {
+    display: grid;
+  }
+
+  .office-button {
+    width: 100%;
+  }
+
+  .office-button-row {
+    display: grid;
+  }
+
+  .meeting-summary-side,
+  .board-meeting-detail-grid section {
+    padding: 0.9rem;
+  }
+}
+
+/* Very narrow phones */
+
+@media (max-width: 430px) {
+  .league-office-hero {
+    --office-seal-size: 18rem;
+    --office-seal-left: 72%;
+    --office-seal-top: 50%;
+    --office-seal-opacity: 0.065;
+  }
+}

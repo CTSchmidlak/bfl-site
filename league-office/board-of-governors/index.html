@@ -1,0 +1,69 @@
+---
+layout: default
+title: Board of Governors
+nav: league-office
+styles:
+  - /css/league-office.css
+---
+{% assign meetings = site.data.board_meetings | sort: 'date' | reverse %}
+
+<main class="page league-office-page">
+  <section class="league-office-hero">
+    <div>
+      <p class="eyebrow">League Office</p>
+      <h1>Board of Governors Archive</h1>
+      <p>
+        Official summaries and full meeting minutes from the Bureaucrat Football League Board of
+        Governors.
+      </p>
+    </div>
+  </section>
+
+  <a class="office-back-link" href="/league-office/">← Back to League Office</a>
+
+  <section class="office-section" aria-labelledby="board-archive-heading">
+    <div class="section-heading">
+      <p class="eyebrow">Official Minutes</p>
+      <h2 id="board-archive-heading">Meeting Archive</h2>
+    </div>
+
+    <div class="board-meeting-list">
+      {% for meeting in meetings %}
+        <article class="board-meeting-card" id="{{ meeting.id }}">
+          <div class="board-meeting-card-header">
+            <div>
+              <p class="meeting-date">{{ meeting.displayDate }}</p>
+              <h3>{{ meeting.eyebrow }}</h3>
+            </div>
+
+            <a class="office-button" href="{{ meeting.pdf }}">Full Minutes</a>
+          </div>
+
+          <p class="board-meeting-summary">{{ meeting.summary }}</p>
+
+          <div class="board-meeting-detail-grid">
+            <section aria-labelledby="{{ meeting.id }}-highlights">
+              <h4 id="{{ meeting.id }}-highlights">Key Actions & Notes</h4>
+
+              <ul class="office-check-list">
+                {% for highlight in meeting.highlights %}
+                  <li>{{ highlight }}</li>
+                {% endfor %}
+              </ul>
+            </section>
+
+            <section aria-labelledby="{{ meeting.id }}-follow-up">
+              <h4 id="{{ meeting.id }}-follow-up">Follow-Up Actions</h4>
+
+              <ul class="office-action-list">
+                {% for action in meeting.actions %}
+                  <li>{{ action }}</li>
+                {% endfor %}
+              </ul>
+            </section>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+</main>

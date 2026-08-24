@@ -2,12 +2,129 @@
 layout: default
 title: Calendar
 nav: calendar
+styles:
+  - /css/calendar.css
 ---
+{% assign events = site.data.calendar_events | sort: 'date' %}
+{% assign today_timestamp = site.time | date: '%s' | plus: 0 %}
+{% assign upcoming_count = 0 %}
+{% assign past_count = 0 %}
 
-<main class="page">
-  <section class="placeholder">
-    <p class="eyebrow">Calendar</p>
+{% for event in events %}
+  {% assign event_timestamp = event.date | date: '%s' | plus: 0 %}
+
+  {% if event_timestamp >= today_timestamp %}
+    {% assign upcoming_count = upcoming_count | plus: 1 %}
+  {% else %}
+    {% assign past_count = past_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+<main class="page calendar-page">
+  <section class="calendar-hero">
+    <p class="eyebrow">Annual Proceedings</p>
     <h1>League Calendar</h1>
     <p>Dates will be posted as they are approved by the League Office.</p>
+  </section>
+
+  <section class="calendar-section" aria-labelledby="upcoming-events-heading">
+    <div class="section-heading">
+      <p class="eyebrow">Official Schedule</p>
+      <h2 id="upcoming-events-heading">Upcoming Events</h2>
+    </div>
+
+    {% if upcoming_count > 0 %}
+      {% assign upcoming_index = 0 %}
+
+      <div class="calendar-event-list">
+        {% for event in events %}
+          {% assign event_timestamp = event.date | date: '%s' | plus: 0 %}
+
+          {% if event_timestamp >= today_timestamp %}
+            {% assign upcoming_index = upcoming_index | plus: 1 %}
+
+            <article
+              class="calendar-event-card{% if upcoming_index == 1 %} calendar-event-card-next{% endif %}"
+              id="{{ event.id }}"
+            >
+              <div class="calendar-event-date">
+                <span>{{ event.date | date: '%b' }}</span>
+                <strong>{{ event.date | date: '%-d' }}</strong>
+                <em>{{ event.date | date: '%Y' }}</em>
+              </div>
+
+              <div class="calendar-event-content">
+                <div class="calendar-card-meta">
+                  {% if upcoming_index == 1 %}
+                    <span class="calendar-next-badge">Next Up</span>
+                  {% endif %}
+
+                  <span>{{ event.category }}</span>
+                  <span>{{ event.status }}</span>
+                </div>
+
+                <h3>{{ event.title }}</h3>
+
+                {% if event.time %}
+                  <p class="calendar-event-time">{{ event.time }}</p>
+                {% endif %}
+
+                <p>{{ event.summary }}</p>
+
+                {% if event.url %}
+                  <a class="calendar-button" href="{{ event.url }}">View Details</a>
+                {% endif %}
+              </div>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <article class="calendar-empty-card">
+        <h3>No upcoming events posted.</h3>
+        <p>Future league dates will appear here once approved by the League Office.</p>
+      </article>
+    {% endif %}
+  </section>
+
+  <section class="calendar-section" aria-labelledby="past-events-heading">
+    <div class="section-heading">
+      <p class="eyebrow">Record Book</p>
+      <h2 id="past-events-heading">Past Events</h2>
+    </div>
+
+    {% if past_count > 0 %}
+      <div class="calendar-archive-list">
+        {% for event in events reversed %}
+          {% assign event_timestamp = event.date | date: '%s' | plus: 0 %}
+
+          {% if event_timestamp < today_timestamp %}
+            <article class="calendar-archive-row">
+              <div class="calendar-archive-date">
+                <span>{{ event.displayDate }}</span>
+              </div>
+
+              <div class="calendar-archive-main">
+                <div class="calendar-card-meta">
+                  <span>{{ event.category }}</span>
+                  <span>Completed</span>
+                </div>
+
+                <h3>{{ event.title }}</h3>
+              </div>
+
+              {% if event.url %}
+                <a class="calendar-archive-link" href="{{ event.url }}">View Record</a>
+              {% endif %}
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <article class="calendar-empty-card">
+        <h3>No completed events yet.</h3>
+        <p>Completed league events will be preserved here after they occur.</p>
+      </article>
+    {% endif %}
   </section>
 </main>

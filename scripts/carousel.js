@@ -12,9 +12,7 @@ carousels.forEach((carouselRoot) => {
 
   const delay = Number(carouselRoot.dataset.carouselDelay) || 8000;
 
-  let activeIndex = slides.findIndex((slide) =>
-    slide.classList.contains("is-active")
-  );
+  let activeIndex = slides.findIndex((slide) => slide.classList.contains("is-active"));
 
   if (activeIndex < 0) {
     activeIndex = 0;
@@ -52,10 +50,7 @@ carousels.forEach((carouselRoot) => {
     }
 
     pauseButton.textContent = userPaused ? "▶" : "⏸";
-    pauseButton.setAttribute(
-      "aria-label",
-      userPaused ? "Play carousel" : "Pause carousel"
-    );
+    pauseButton.setAttribute("aria-label", userPaused ? "Play carousel" : "Pause carousel");
     pauseButton.setAttribute("aria-pressed", String(userPaused));
   }
 

@@ -2,12 +2,114 @@
 layout: default
 title: League Office
 nav: league-office
+styles:
+  - /css/league-office.css
 ---
+{% assign meetings = site.data.board_meetings | sort: 'date' | reverse %}
+{% assign latest_meeting = meetings | first %}
 
-<main class="page">
-  <section class="placeholder">
-    <p class="eyebrow">League Office</p>
-    <h1>League Office</h1>
-    <p>Rules, procedures, and official league business will be published here.</p>
+<main class="page league-office-page">
+  <section class="league-office-hero">
+    <div>
+      <p class="eyebrow">League Office</p>
+      <h1>Official Business and League Proceedings</h1>
+      <p>
+        Notices, meeting summaries, league actions, and institutional records from the Office of the
+        Commissioner and the BFL Board of Governors.
+      </p>
+    </div>
+  </section>
+
+  <section class="office-alert-grid" aria-label="League notices">
+    <article class="office-alert office-alert-primary">
+      <p class="eyebrow">Draft Day</p>
+      <h2>Inaugural BFL Draft</h2>
+      <p class="office-alert-date">Sunday, September 6, 2026</p>
+      <p>
+        The founding franchises will report for the first draft in Bureaucrat Football League
+        history.
+      </p>
+    </article>
+
+    <article class="office-alert">
+      <p class="eyebrow">League Year</p>
+      <h2>2026–27 Season</h2>
+      <p>
+        The first BFL league year is underway. Official records, meeting minutes, draft information,
+        and league actions will be preserved here.
+      </p>
+    </article>
+  </section>
+
+  {% if latest_meeting %}
+    <section class="office-section" aria-labelledby="latest-meeting-heading">
+      <div class="section-heading">
+        <p class="eyebrow">Latest Board Action</p>
+        <h2 id="latest-meeting-heading">{{ latest_meeting.eyebrow }}</h2>
+      </div>
+
+      <article class="meeting-summary-card">
+        <div class="meeting-summary-main">
+          <p class="meeting-date">{{ latest_meeting.displayDate }}</p>
+          <h3>{{ latest_meeting.title }}</h3>
+          <p>{{ latest_meeting.summary }}</p>
+
+          <div class="office-button-row">
+            <a class="office-button" href="{{ latest_meeting.pdf }}">Read Full Minutes</a>
+            <a
+              class="office-button office-button-secondary"
+              href="/league-office/board-of-governors/"
+            >
+              View Board Archive
+            </a>
+          </div>
+        </div>
+
+        <div class="meeting-summary-side">
+          <h4>At a Glance</h4>
+
+          <ul class="office-check-list">
+            {% for highlight in latest_meeting.highlights limit: 5 %}
+              <li>{{ highlight }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </article>
+    </section>
+  {% endif %}
+
+  <section class="office-section" aria-labelledby="office-functions-heading">
+    <div class="section-heading">
+      <p class="eyebrow">Institutional Record</p>
+      <h2 id="office-functions-heading">League Office Functions</h2>
+    </div>
+
+    <div class="office-function-grid">
+      <article class="office-function-card">
+        <h3>Board of Governors</h3>
+        <p>
+          Meeting summaries, official minutes, approved proposals, and follow-up actions from the
+          governing body of the BFL.
+        </p>
+        <a href="/league-office/board-of-governors/">Open Archive</a>
+      </article>
+
+      <article class="office-function-card">
+        <h3>Rules & Governance</h3>
+        <p>
+          League rules, approved traditions, keeper mechanisms, draft procedures, and future
+          governance updates.
+        </p>
+        <span>Coming Soon</span>
+      </article>
+
+      <article class="office-function-card">
+        <h3>Draft Administration</h3>
+        <p>
+          Draft date, lottery results, draft order, and official draft records for each league year.
+        </p>
+        <span>Coming Soon</span>
+      </article>
+    </div>
   </section>
 </main>

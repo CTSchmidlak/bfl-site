@@ -4,43 +4,52 @@ title: Home
 nav: home
 home: true
 ---
+<!--
+  Note: use
+  bundle exec jekyll serve --livereload --force_polling
+  to open live server preview
+-->
 
-<!-- Note: use 
-  bundle exec jekyll serve --livereload
-  to open live server preview -->
 <main class="page home-page">
   <section
     class="home-carousel"
     aria-labelledby="featured-heading"
     data-carousel
-    data-carousel-delay="8000">
+    data-carousel-delay="8000"
+  >
     <h1 id="featured-heading" class="sr-only">Featured Bureaucrat Football League stories</h1>
 
     <div class="carousel">
       <div class="carousel-track">
         <!--
           Carousel slide reference:
-        
+
           For a normal photo background that fills the full carousel area, use:
             <article
-      class="carousel-slide has-image"
+              class="carousel-slide has-image"
               style="--slide-image: url('/images/example.jpg')"
               hidden
             >
-            For a centered, non-cropped image such as the BFL logo, use:
+
+          For a centered, non-cropped image such as the BFL logo, use:
             <article
               class="carousel-slide has-image image-contain"
               style="--slide-image: url('/images/logo/BFL_logo.svg')"
               hidden
             >
-            Notes:
-            - Use "has-image" when the slide should use a background image.
-            - Use "image-contain" when the image should be centered and not cropped.
-            - Omit "image-contain" for normal photos that should fill the full slide.
-            - "hidden" tag hides articles that you don't want shown by default (i.e. not the first article).
-            - The first/active slide is marked with the "is-active" tag (and therefore, "hidden" should be omitted).
+
+          Notes:
+          - Use "has-image" when the slide should use a background image.
+          - Use "image-contain" when the image should be centered and not cropped.
+          - Omit "image-contain" for normal photos that should fill the full slide.
+          - "hidden" tag hides articles that you don't want shown by default.
+          - The first/active slide is marked with "is-active".
         -->
-        <article class="carousel-slide is-active has-image" style="--slide-image: url(/images/media/field-BFL.png)">
+
+        <article
+          class="carousel-slide is-active has-image"
+          style="--slide-image: url(/images/media/field-BFL.png)"
+        >
           <div class="carousel-slide-content">
             <p class="eyebrow">Founding Season · 2026</p>
 
@@ -54,17 +63,40 @@ home: true
 
         <article
           class="carousel-slide has-image"
-          style="--slide-image: url(/images/media/quarterback.jpg)"
-          hidden>
+          style="--slide-image: url(/images/media/crowd-2.jpg)"
+          hidden
+        >
           <div class="carousel-slide-content">
-            <p class="eyebrow">Missives from the League Office</p>
+            <p class="eyebrow">Draft Day · September 6, 2026</p>
 
-            <h2>League Formation Is Underway</h2>
+            <h2>The Inaugural BFL Draft Is Set</h2>
 
-            <p>The BFL is preparing for its inaugural season. Expansion, rules, draft info, and more will be published following approval by the League Office.</p>
+            <p>
+              The founding franchises will report on Sunday, September 6, 2026, for the first draft
+              in Bureaucrat Football League history.
+            </p>
 
-            <a class="button button-primary" href="/league-office/">
-              Visit the League Office
+            <a class="button button-primary" href="/calendar/">View Calendar</a>
+          </div>
+        </article>
+
+        <article
+          class="carousel-slide has-image"
+          style="--slide-image: url(/images/media/quarterback.jpg)"
+          hidden
+        >
+          <div class="carousel-slide-content">
+            <p class="eyebrow">Board of Governors</p>
+
+            <h2>The First Board Meeting Is in the Books</h2>
+
+            <p>
+              The Board opened the 2026–27 league year, approved inaugural business, elected a
+              Treasurer, and began building the institutional record of the BFL.
+            </p>
+
+            <a class="button button-primary" href="/league-office/board-of-governors/">
+              Read the Minutes
             </a>
           </div>
         </article>
@@ -72,32 +104,19 @@ home: true
         <article
           class="carousel-slide has-image"
           style="--slide-image: url(/images/media/lombardi.jpg)"
-          hidden>
+          hidden
+        >
           <div class="carousel-slide-content">
-            <p class="eyebrow">Expansion Bids are Open!</p>
+            <p class="eyebrow">League Directory</p>
 
-            <h2>Founding Franchises Await Approval</h2>
+            <h2>The Founding Franchises Are Locked In</h2>
 
-            <p>Future franchise pages will include team identity, ownership, records, rosters, trophy cases, and more.</p>
+            <p>
+              Browse the inaugural lineup of BFL franchises, with team pages preserving identity,
+              ownership, records, rosters, trophy cases, and more.
+            </p>
 
-            <a class="button button-primary" href="/franchises/">
-              View Franchises
-            </a>
-          </div>
-        </article>
-
-        <article
-          class="carousel-slide has-image"
-          style="--slide-image: url(/images/media/crowd-2.jpg)"
-          hidden>
-          <div class="carousel-slide-content">
-            <p class="eyebrow">Annual Proceedings</p>
-
-            <h2>The BFL Calendar Takes Shape</h2>
-
-            <p>Dates for Draft Day, the Championship Viewing Party, the BFL Honors Banquet, and other annual proceedings to be announced. Stay tuned!</p>
-
-            <a class="button button-primary" href="/calendar/">View Calendar</a>
+            <a class="button button-primary" href="/franchises/">View Franchises</a>
           </div>
         </article>
       </div>
@@ -106,13 +125,19 @@ home: true
         class="carousel-arrow carousel-arrow-prev"
         type="button"
         data-carousel-prev
-        aria-label="Previous featured story">‹</button>
+        aria-label="Previous featured story"
+      >
+        ‹
+      </button>
 
       <button
         class="carousel-arrow carousel-arrow-next"
         type="button"
         data-carousel-next
-        aria-label="Next featured story">›</button>
+        aria-label="Next featured story"
+      >
+        ›
+      </button>
 
       <div class="carousel-bottom-controls">
         <button
@@ -120,7 +145,10 @@ home: true
           type="button"
           data-carousel-pause
           aria-label="Pause carousel"
-          aria-pressed="false">⏸</button>
+          aria-pressed="false"
+        >
+          ⏸
+        </button>
 
         <div class="carousel-dots" aria-label="Featured story navigation"></div>
       </div>
@@ -145,11 +173,12 @@ home: true
 
         <h3>Founding Franchises</h3>
 
-        <p>The league’s founding franchises will be announced following completion of the inaugural ownership process.</p>
+        <p>
+          The league’s founding franchises are locked in for the inaugural Bureaucrat Football
+          League season.
+        </p>
 
-        <a class="text-link" href="/franchises/">
-          Franchise directory
-        </a>
+        <a class="text-link" href="/franchises/">Franchise directory</a>
       </article>
 
       <article class="information-block">
@@ -157,69 +186,34 @@ home: true
 
         <h3>League Governance</h3>
 
-        <p>The Board of Governors, inaugural rulebook, and procedures for league business are currently under development.</p>
+        <p>
+          The Board of Governors has opened the 2026–27 league year and begun preserving official
+          league business.
+        </p>
 
-        <a class="text-link" href="/league-office/">
-          Visit the League Office
-        </a>
-      </article>
-
-      <article class="information-block">
-        <p class="block-number">03</p>
-
-        <h3>Inaugural Draft</h3>
-
-        <p>The date, format, and official procedures for the first BFL Draft will be published after approval of the league calendar.</p>
-
-        <a class="text-link" href="/calendar/">
-          Review the calendar
-        </a>
+        <a class="text-link" href="/league-office/">Visit the League Office</a>
       </article>
     </div>
   </section>
 
-  <section class="home-section">
-    <div class="section-heading">
-      <p class="eyebrow">Annual Proceedings</p>
-      <h2>League Calendar</h2>
+  <section class="home-section home-schedule-section" aria-labelledby="home-schedule-heading">
+    <p class="eyebrow home-schedule-eyebrow">Upcoming League Business</p>
 
-      <p>Dates will be posted as they are approved by the League Office.</p>
-    </div>
-
-    <div class="event-list">
-      <div class="event-row">
-        <p class="event-name">Off-season Board of Governors Meeting</p>
-        <p class="event-date">Date pending</p>
+    <article class="home-schedule-banner">
+      <div class="home-schedule-date">
+        <span>Sep</span>
+        <strong>6</strong>
+        <em>2026</em>
       </div>
 
-      <div class="event-row">
-        <p class="event-name">BFL Draft Day</p>
-        <p class="event-date">Date pending</p>
+      <div class="home-schedule-main">
+        <h2 id="home-schedule-heading">Inaugural BFL Draft</h2>
+        <p>
+          The founding franchises report for the first draft in Bureaucrat Football League history.
+        </p>
       </div>
 
-      <div class="event-row">
-        <p class="event-name">Week 1 Launch Party</p>
-        <p class="event-date">Date pending</p>
-      </div>
-
-      <div class="event-row">
-        <p class="event-name">BFL Championship Viewing Party</p>
-        <p class="event-date">Date pending</p>
-      </div>
-
-      <div class="event-row">
-        <p class="event-name">BFL Honors Banquet</p>
-        <p class="event-date">Date pending</p>
-      </div>
-
-      <div class="event-row">
-        <p class="event-name">Super Bowl Party</p>
-        <p class="event-date">Date pending</p>
-      </div>
-    </div>
-
-    <a class="text-link calendar-link" href="/calendar/">
-      View the full league calendar
-    </a>
+      <a class="home-schedule-action" href="/calendar/">View Calendar</a>
+    </article>
   </section>
 </main>
